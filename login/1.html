@@ -1,71 +1,181 @@
 <!DOCTYPE html>
 <html>
- 
     <head>
         <meta charset="utf-8">
-        <title>TencentQQ</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-        <script type="text/javascript" src="js/index.js" ></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+        <title>影像登录</title>
+        <style>
+                body{
+                background: url('image/bg@2x.png')  
+                }
+                .logo{
+                    width:100px;
+                    margin: 107px auto 101px auto;
+                }
+                .carName{
+                    width: 80%;
+                    height: 40px;
+                    margin: 0 auto;
+                    position: relative;
+                    background-color: #4ea7ce;
+                    border-radius: 4px;
+                    opacity: 0.8;
+                }
+                .carPassword{
+                    width: 80%;
+                    height: 40px;
+                    margin: 20px auto;
+                    position: relative;
+                    background-color: #4ea7ce;
+                    border-radius: 4px;
+                    opacity: 0.8;
+                }
+                .code{
+                    width: 80%;
+                    height: 40px;
+                    margin: 20px auto;
+                    position: relative;
+                }
+
+                .carName input{
+                    width:70%;
+                    height: 38px;
+                    background:none;
+                    border: none;
+                    color:#ffffff;
+                }
+                .carPassword input{
+                    width:70%;
+                    height: 38px;
+                    background:none;
+                    border: none;
+                    color:#ffffff;
+                }
+                .code input{
+                    width:60%;
+                    height: 38px;
+                    background:none;
+                    border: none;
+                    color:#ffffff;
+                }
+                .icon-yonghuming{
+                    width:6%;
+                    height:20px;
+                    background-image: url(image/user@2x.png);
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: 20px 20px;
+                    z-index: 200000;
+                    display: block;
+                    float: left;
+                    margin: 10px 20px;
+
+                }
+                .icon-mima{
+                    width:6%;
+                    height:20px;
+                    background-image: url(image/pwd.png@2x.png);
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: 20px 20px;
+                    z-index: 200000;
+                    display: block;
+                    float: left;
+                    margin: 10px 20px;
+                }
+                .icon-code{
+                    width:10%;
+                    max-width: 17px;
+                    height:20px;
+                    background-image: url(image/safe@2x.png);
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: 20px 20px;
+                    z-index: 200000;
+                    display: block;
+                    float: left;
+                    margin: 10px 20px; 
+                }
+                .code img{
+                    width:44%;
+                }
+                /* 修改placeholder颜色 */
+                ::-webkit-input-placeholder { /* WebKit browsers */
+                    color:#ffffff;
+                }
+                :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                    color:#ffffff;
+                }
+                ::-moz-placeholder { /* Mozilla Firefox 19+ */
+                    color:#ffffff;
+                }
+                :-ms-input-placeholder { /* Internet Explorer 10+ */
+                    color:#ffffff;
+                }
+                .submit{
+                    width:80%;
+                    height: 40px;
+                    margin: 60px auto;
+                    background-color: #ffffff;
+                    border-radius: 4px;
+                }
+                .submit input{
+                    width:100%;
+                    background: none;
+                    border:none;
+                    height: 38px;
+                    color: #2c97c5;
+                    font-weight: bold;
+                }
+                .ionic_code{
+                    width:70%;
+                    float: left;
+                    height: 40px;
+                    background-color: #4ea7ce;
+                    opacity: 0.8;
+                }
+                .codeImg{
+                    float: left;
+                    width: 30%;
+                    height: 40px;
+                    background-color: #b2ddf0;
+                    text-align: center;
+                    line-height: 40px;
+                } 
+        </style>
     </head>
- 
+
     <body>
-        <!--登陆页面-->
-        <div data-role="page" id="pageLogin">
-            <div data-role="header">
-                <h1 role="heading">Tencent办公系统</h1>
+        <div class="login">
+            <div class="logo">
+                <img width="100" src="image/logo@2x.png"/>
             </div>
-            <div data-role="main" class="ui-content">
-                <form method="get" action="">
-                    <div class="ui-field-contain">
-                        <label for="name">帐号:</label>
-                        <input type="text" name="u_name" id="u_name">
-                        <br/>
-                        <label for="password">密码:</label>
-                        <input type="password" name="u_password" id="u_password">
-                        <div style="margin-top: 20%;">
-                            <input type="button" value="登录" onclick="login()" />
-                            <a href="#pagetwo" data-role="button" data-transition="flip">注册</a>
-                        </div>
-                        <h5 style="color: red;">测试登录帐号：admin 密码：admin888</h5>
-                        <h5 style="color: red;">测试登录帐号：root 密码：123456</h5>
+            <form id="loginForm" action="" class="">
+                <div class="carName">
+                    <i class="iconfont icon-yonghuming"></i>
+                    <input id="username" type="text" class="usernames" placeholder="请输入用户名">
+                </div>
+                <div class="carPassword">
+                    <span class="ionic_pass">
+                        <i class="iconfont icon-mima"></i>
+                        <input id="password" type="password" class="passwords" placeholder="请输入密码">
+                    </span>
+                </div>
+                <div class="code">
+                    <div class="ionic_code">
+                        <i class="iconfont icon-code"></i>
+                        <input id="password"  class="passwords" placeholder="请输入验证码">
                     </div>
-                </form>
-            </div>
-            <div data-role="footer" style="text-align: center" data-position="fixed">
-                <p>Copyright © 1998 - 2017 Tencent</p>
-            </div>
-        </div>
-        <!--注册页面-->
-        <div data-role="page" id="pagetwo" data-theme="b">
-            <div data-role="header">
-                <h1>欢迎注册Tencent</h1>
-            </div>
-            <div data-role="main" class="ui-content">
-                <form method="get" action="">
-                    <div class="ui-field-contain">
-                        <label for="Rname">帐号:</label>
-                        <input type="text" name="u_name1" id="u_name1">
-                        <br/>
-                        <label for="Rpassword">密码:</label>
-                        <input type="password" name="u_password1" id="u_password1">
-                        <br/>
-                        <label for="Repassword">重复密码:</label>
-                        <input type="password" name="u_password2" id="u_password2">
-                        <div style="margin-top: 20%;">
-                            <input type="button" value="确定注册" onclick="register()" />
-                            <a href="#pageLogin" data-role="button" data-transition="flip" data-direction="reverse">返回</a>
-                        </div>
+                    <div class="codeImg">
+                        <!-- <img src=""/> -->
+                        1234
                     </div>
-                </form>
-            </div>
-            <div data-role="footer" style="text-align: center" data-position="fixed">
-                <p>Copyright © 1998 - 2017 Tencent</p>
-            </div>
+                </div>
+                <div style="clear: both;"></div>
+                <div class="submit">
+                    <input id="submit" type="button" value="登 录" />
+                </div>
+            </form>
         </div>
- 
     </body>
- 
 </html>
