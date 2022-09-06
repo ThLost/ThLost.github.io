@@ -1,1 +1,15 @@
->"'><img src="javascript.:alert('XSS')">
+<!DOCTYPE html>
+<html lang="en">
+    <script src="">alert("-----")</script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>alert(000)</script>
+</head>
+<body>
+
+    <img src="" onerror=alert(1111)>
+    <script>alert(2222)</script>
+<iframe frameborder="0" width="100%" height="800" src="http://192.168.104.95:8080/test1"></iframe>
+</body>
+</html>
